@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        jsCodeLocation = URL(string: "http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
+//        jsCodeLocation = URL(string: "http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
         return true
     }
 
