@@ -100,6 +100,7 @@
 				3B5BF80822A696E1000F64BA /* Frameworks */,
 				3B5BF80922A696E1000F64BA /* Resources */,
 				CD6E59391662259E27F0A6FA /* [CP] Embed Pods Frameworks */,
+				3B0E553E22B0A368008CDCBC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -178,6 +179,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3B0E553E22B0A368008CDCBC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if nc -w 5 -z localhost 8081 ; then\nif ! curl -s \"http://localhost:8081/status\" | grep -q \"packager-status:running\" ; then\necho \"Port 8081 already in use, packager is either not running or not running correctly\"\nexit 2\nfi\nelse\nopen \"../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\nfi\n";
 		};
 		CD6E59391662259E27F0A6FA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

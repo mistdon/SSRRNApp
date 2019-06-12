@@ -11,3 +11,15 @@ React-Native Version 0.59.9
       第2步会自动在Podfile中添加
       `pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'`
       1.3 cd ios && pod install 完成安装
+2. React-Native使用Pod不能自动打开控制台的bug
+	通过在Xcode->Target->Build Phases -> Add Run Script解决
+	```shell
+	if nc -w 5 -z localhost 8081 ; then
+	if ! curl -s "http://localhost:8081/status" | grep -q "packager-status:running" ; then
+	echo "Port 8081 already in use, packager is either not running or not running correctly"
+	exit 2
+	fi
+	else
+	open "../node_modules/react-native/scripts/launchPackager.command" || echo "Can't start packager automatically"
+	fi
+	```
